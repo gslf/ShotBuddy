@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}" />
+{% endblock %}
+
+{% block content %}
+    <div id="homecontainer">
+        <img id="logo" src="{{url_for('static', filename='img/shotbuddy.png')}}" alt="ShotBuddy">
+
+        <form id="form" action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.username(size=25, placeholder="Username") }}
+            </p>
+            <p>
+                {{ form.password(size=25, placeholder="Password") }}
+            </p>
+            
+            <p>{{ form.submit() }}<br>
+                {{ form.remember_me(checked=True) }} {{ form.remember_me.label }}
+            </p>
+        </form>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{url_for('static', filename='js/home.js')}}"></script>
+{% endblock %}
