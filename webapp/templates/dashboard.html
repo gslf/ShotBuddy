@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/dashboard.css')}}" />
+{% endblock %}
+
+{% block content %}
+<div id="dashboard_container">
+    <img id="logo" src="{{url_for('static', filename='img/shotbuddy.png')}}" alt="ShotBuddy">
+
+    <div id="last_session">
+        <div id="last_session_title"><span class="bold">LAST SESSION</span> XX/XX/XX </div>
+        <div id="last_session_subtitle"><span class="medium">SCORED</span> XXX/XXX <span class="light">(XX.XX%)</span></div>
+    </div>
+    <div id="averages">
+        <div class="average">
+            AVERAGE 3gg <span class="average_percentage">XX</span>%
+        </div>
+        <div class="average">
+            AVERAGE 3gg <span class="average_percentage">XX</span>%
+        </div>
+        <div class="average">
+            AVERAGE 3gg <span class="average_percentage">XX</span>%
+        </div>
+        <div class="average">
+            AVERAGE 3gg <span class="average_percentage">XX</span>%
+        </div>
+    </div>
+
+    <div id="stats">
+        <div class="stats_item">
+            <div class="stats_title light">PERCENTAGE</div>
+            <div class="stats_graph"><canvas id="percentage_chart" ></canvas></div>
+        </div>
+        <div class="stats_item">
+            <div class="stats_title light">ERRORS</div>
+            <div class="stats_graph"><canvas id="errors_chart"></canvas></div>
+        </div>
+        <div class="stats_item">
+            <div class="stats_title light">SHOTS</div>
+            <div class="stats_graph"><canvas id="shots_chart"></canvas></div>
+        </div>
+        <div class="stats_item">
+            <div class="stats_title light">SCORE</div>
+            <div class="stats_graph"><canvas id="score_chart"></canvas></div>
+        </div>
+    </div>
+
+    <div id="menu">
+        <div class="menu_item">
+            <a href="">
+                <i class="fas fa-history"></i>
+            </a>
+        </div>
+        <div class="menu_item">
+            <a href="">
+                <i class="fas fa-plus"></i>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/dashboard.js')}}"></script>
+{% endblock %}
