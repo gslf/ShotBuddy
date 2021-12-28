@@ -1,3 +1,5 @@
+import time
+
 from webapp.DBManager import DBManager
 from webapp.UsersManager import UsersManager
 from webapp.User import User
@@ -13,6 +15,7 @@ def mainMenu():
 
         print("Menu:")
         print("1. User Management")
+        print("2. Session Management")
         print("q. Quit")
         print("")
         
@@ -72,7 +75,9 @@ def userManagement():
     elif query == "4":
         um = UsersManager()
         userList = um.getAll()
-        print(userList)
+        
+        for user in userList:
+            print ("User #{}: {}".format(user.id, user.username))
 
         input("Press any key to continue")
         
