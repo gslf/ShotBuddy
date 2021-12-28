@@ -3,3 +3,12 @@ CREATE TABLE users(
     username TEXT UNIQUE NOT NULL,
     password TEXT NOT NULL
 );
+
+CREATE TABLE sessions(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_user INTEGER,
+    percentage_target REAL,
+    shots TEXT,
+    duration INTEGER,
+    FOREIGN KEY(id_user) REFERENCES users(id)
+)
