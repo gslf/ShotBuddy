@@ -1,7 +1,8 @@
 import time
+import unittest
 
-from tests.sessionManagementTests import sessionManagementTests
-from tests.userManagementTests import userManagementTests
+from tests.sessionManagementTests import TestSessionManagement
+from tests.userManagementTests import TestUserManagement
 
 def mainMenu():
     while True:
@@ -22,14 +23,14 @@ def mainMenu():
         query = input("Choose & Enter query number available in the menu: ")
 
         if query == "1":
-            sessionManagementTests()
-            userManagementTests()
+             unittest.main(TestUserManagement(), exit = False) 
+             unittest.main(TestSessionManagement(), exit = False)
 
         elif query == "2":
-            sessionManagementTests()
+             unittest.main(TestSessionManagement(), exit = False)
 
         elif query == "3":
-            userManagementTests()
+             unittest.main(TestUserManagement(), exit = False) 
 
         elif query == "q":
                 break

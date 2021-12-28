@@ -1,3 +1,5 @@
+import sys, traceback
+
 import sqlite3 as sql
 from webapp.vars import SQL_DB
 
@@ -39,6 +41,7 @@ class DBManager():
             print('SQLite traceback: ')
             exc_type, exc_value, exc_tb = sys.exc_info()
             print(traceback.format_exception(exc_type, exc_value, exc_tb))
+            return(False, "Query Failed! Error:{}".format(str(traceback.format_exception(exc_type, exc_value, exc_tb))))
         except Exception as error:
             self.db.close()
             return(False, "Query Failed! Error:{}".format(str(error)))
