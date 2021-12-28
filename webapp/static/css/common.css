@@ -28,3 +28,25 @@ body{
     min-height:100%;
 }
 
+#logout{
+    position:absolute;
+    font-size: 18pt;
+    top: 18px;
+    right: 18px;
+    height:22px;
+    width:22px;
+    line-height:22px;
+    text-align:center;
+    padding:14px;
+    margin:10px;
+    border-radius: 100%;
+    background-color:#FFF;
+    opacity: 0.8;;
+}
+
+#logout a, #logout a:hover, #logout a:visited, #logout a:active{
+    margin-top:-3;
+    color:#2f2f2f;
+    cursor:pointer;
+}
+

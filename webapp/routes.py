@@ -38,6 +38,23 @@ def dashboard():
 
     return render_template('dashboard.html')
 
+@app.route('/session')
+@login_required
+def session():
+    if not current_user.is_authenticated:
+        return redirect(url_for('index'))
+
+    return render_template('session.html')
+
+
+@app.route('/history')
+@login_required
+def history():
+    if not current_user.is_authenticated:
+        return redirect(url_for('index'))
+
+    return render_template('history.html')
+
 @app.route('/logout')
 @login_required
 def logout():

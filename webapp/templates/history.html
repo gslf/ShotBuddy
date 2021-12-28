@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/history.css')}}" />
+{% endblock %}
+
+{% block content %}
+
+<div id="history_container">
+
+    <img id="logo" src="{{url_for('static', filename='img/shotbuddy.png')}}" alt="ShotBuddy">
+
+    <div id="result_table">
+        <table>
+            <th>
+                <td>SHOTS</td>
+                <td>POINTS</td>
+                <td>%%</td>
+                <td>EDIT</td>
+            </th>
+            <tr>
+                <td>01/01/2022</td>
+                <td># 100</td> 
+                <td>800</td>
+                <td>80%</td>
+                <td><i class="fas fa-edit"></i></td>
+            </tr>
+            <tr>
+                <td>01/01/2022</td>
+                <td># 100</td> 
+                <td>800</td>
+                <td>80%</td>
+                <td><i class="fas fa-edit"></i></td>
+            </tr>
+            <tr>
+                <td>01/01/2022</td>
+                <td># 100</td> 
+                <td>800</td>
+                <td>80%</td>
+                <td><i class="fas fa-edit"></i></td>
+            </tr>
+            <tr>
+                <td>01/01/2022</td>
+                <td># 100</td> 
+                <td>800</td>
+                <td>80%</td>
+                <td><i class="fas fa-edit"></i></td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div id="logout">
+        <a href="/logout">
+            <i class="fas fa-sign-out-alt"></i>
+        </a>
+    </div>
+
+    <div id="menu">
+        <span class="menu_item">
+            <i class="fas fa-chart-line"></i>
+        </span>
+    </div>
+
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{url_for('static', filename='js/history.js')}}"></script>
+{% endblock %}
