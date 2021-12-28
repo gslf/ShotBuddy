@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/session.css')}}" />
+{% endblock %}
+
+{% block content %}
+
+<div id="session_container">
+
+    <img id="logo" src="{{url_for('static', filename='img/shotbuddy.png')}}" alt="ShotBuddy">
+
+    <div id="timer">
+        SESSION TIME <span id="timer_time">XX:XX</span>
+    </div>
+
+    <div id="target">
+        PERCENTAGE TARGET <span id=target_percentage>XX</span>% <span id="target_edit"><i class="fas fa-edit"></i></span>
+    </div>
+
+    <div id="percentage">
+        <span id="percentage_score">XX.XX</span>%
+    </div>
+
+    <div id="out_target">
+        OUT TARGET <span id="out_target_percentage">XX</span>%
+    </div>
+
+    <div id="result_table">
+        <table>
+            <th>
+                <td>POINTS</td>
+                <td>PERCENTAGE</td>
+                <td>EDIT</td>
+            </th>
+            <tr>
+              <td># 1</td>
+              <td>38</td> 
+              <td>60%</td>
+              <td><i class="fas fa-edit"></i></td>
+            </tr>
+            <tr>
+              <td>#2</td>
+              <td>38</td> 
+              <td>60%</td>
+              <td><i class="fas fa-edit"></i></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="logout">
+        <a href="/logout">
+            <i class="fas fa-sign-out-alt"></i>
+        </a>
+    </div>
+
+    <div id="menu">
+        <span class="menu_item">
+            <i class="fas fa-pause"></i>
+        </span>
+        <span class="menu_item">
+            <i class="fas fa-stop"></i>
+        </span>
+        <span class="menu_item">
+            <i class="fas fa-plus"></i>
+        </span>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{url_for('static', filename='js/session.js')}}"></script>
+{% endblock %}
