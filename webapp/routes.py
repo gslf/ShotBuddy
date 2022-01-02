@@ -5,6 +5,8 @@ from webapp import app
 from webapp.User import User
 from webapp.UsersManager import UsersManager
 
+from webapp.API.dashboard import dashboardDataRetrieve
+
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 def index():
@@ -60,3 +62,13 @@ def history():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+
+#######################################
+## API Routes
+
+@app.route('/API/dashboard', methods=['POST'])
+@login_required
+def dashboardAPI():
+    response = dashboardDataRetrieve(current_user.id)
+    return response

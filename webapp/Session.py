@@ -1,4 +1,4 @@
-def Session():
+class Session():
     """A class to describe a shooting session
 
     Attributes:
@@ -9,10 +9,9 @@ def Session():
         duration - (int) Sesion lenght in seconds
     """
 
-    def __init__(self, id, id_user, percentage_target, shots, score, duration):
+    def __init__(self, id_user, percentage_target, shots, duration, id = None):
         self.id = id
         self.id_user = id_user
         self.percentage_target = percentage_target
         self.shots = shots
-        self.score = score
         self.duration = duration
