@@ -108,12 +108,13 @@ def sessionManagement():
     if query == "1":
         # Create a new session
         id_user = input("ID User: ")
+        datetime = input("Datetime {gg-mm-yy hh:mm:ss}: ")
         percentage_target = input("Percentage target: ") 
         shots = input("Shots [x,y,z]: ") 
         duration = input("Duration: ")
 
         sm = SessionsManager(id_user)
-        result = sm.new(id_user, percentage_target, shots, duration)
+        result = sm.new(id_user, datetime, percentage_target, shots, duration)
         print("Creation result: {}".format(result))
 
         input("Press any key to continue")
@@ -122,6 +123,7 @@ def sessionManagement():
         # Update values of a session
         id_session = input("ID Session: ")
         id_user = input("ID User: ")
+        datetime = input("Datetime {gg-mm-yy hh:mm:ss}: ")
         percentage_target = input("Percentage target: ") 
         shots = input("Shots [x,y,z]: ") 
         duration = input("Duration: ")
@@ -131,6 +133,7 @@ def sessionManagement():
         print("Loading result: {}".format(loading_result))
         
         sm.session.id_user = id_user
+        sm.session.datetime = datetime
         sm.session.percentage_target = percentage_target
         sm.session.shots = shots
         sm.session.duration = duration
@@ -160,7 +163,7 @@ def sessionManagement():
 
         for session_id in session_ids:
             session = sm.load(session_id)
-            print("Session #{} - user {} - percentage target: {} - shots: {} - duration: {}".format(session.id, session.id_user, session.percentage_target, session.shots, session.duration))
+            print("Session #{} {} - user {} - percentage target: {} - shots: {} - duration: {}".format(session.id, session.datetime, session.id_user, session.percentage_target, session.shots, session.duration))
         
         input("Press any key to continue")
 

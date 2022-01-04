@@ -1,3 +1,18 @@
+// LOAD DATA
+$(document).ready(function(){
+
+    $.post('/API/dashboard', {}, 
+        function(data, status, xhr) {
+            // TODO
+            console.log(data)
+        })
+
+        .fail(function(jqxhr, settings, ex) { 
+            alert(LOADING_ERROR + ex); 
+        });
+
+});
+
 //////////////////////////////////////////////////////////////////////////////
 // PERCENTAGE CHART
 const ctx_percentage = document.getElementById('percentage_chart').getContext('2d');

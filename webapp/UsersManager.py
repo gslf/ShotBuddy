@@ -15,7 +15,7 @@ def load_user(username):
 
     if len(users) > 0:
         user_id = users[0][0]
-        user = User(user_id, username)
+        user = User(username, user_id)
 
         return user
     return None

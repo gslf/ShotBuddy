@@ -51,9 +51,10 @@ class SessionsManager():
 
             self.session = Session(
                 id_user = retrieved_session[1],
-                percentage_target = retrieved_session[2],
-                shots = retrieved_session[3],
-                duration = retrieved_session[4],
+                datetime = retrieved_session[2],
+                percentage_target = retrieved_session[3],
+                shots = retrieved_session[4],
+                duration = retrieved_session[5],
                 id = retrieved_session[0]
             )
 
@@ -79,7 +80,7 @@ class SessionsManager():
 
         return self.session
 
-    def new(self, id_user, percentage_target, shots, duration):
+    def new(self, id_user, datetime, percentage_target, shots, duration):
         """Create a new session and save it to the DB
 
         Return:
@@ -87,13 +88,14 @@ class SessionsManager():
         """
         self.session = Session(
             id_user = id_user,
+            datetime = datetime,
             percentage_target = percentage_target,
             shots = shots,
             duration = duration
         )
 
         self.db.open()
-        new_id, errors = self.db.insert('INSERT INTO sessions (id_user, percentage_target, shots, duration) VALUES (?,?,?,?)', (id_user, percentage_target, shots, duration))
+        new_id, errors = self.db.insert('INSERT INTO sessions (id_user, datetime, percentage_target, shots, duration) VALUES (?,?,?,?,?)', (id_user, datetime, percentage_target, shots, duration))
         self.db.close()
 
         if new_id != False:
@@ -113,8 +115,8 @@ class SessionsManager():
 
         if self.session != None and self.session.id > 0:
             self.db.open()
-            result, errors = self.db.update('UPDATE sessions SET id_user=?, percentage_target=?, shots=?, duration=? WHERE id=?', (
-                self.session.id_user, self.session.percentage_target, self.session.shots, self.session.duration, self.session.id))
+            result, errors = self.db.update('UPDATE sessions SET id_user=?, datetime = ?, percentage_target=?, shots=?, duration=? WHERE id=?', (
+                self.session.id_user, self.session.datetime, self.session.percentage_target, self.session.shots, self.session.duration, self.session.id))
             self.db.close()
 
             if result:

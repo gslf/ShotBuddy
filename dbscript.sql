@@ -7,6 +7,7 @@ CREATE TABLE users(
 CREATE TABLE sessions(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     id_user INTEGER,
+    datetime TEXT,
     percentage_target REAL,
     shots TEXT,
     duration INTEGER,

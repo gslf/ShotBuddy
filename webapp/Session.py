@@ -9,9 +9,10 @@ class Session():
         duration - (int) Sesion lenght in seconds
     """
 
-    def __init__(self, id_user, percentage_target, shots, duration, id = None):
+    def __init__(self, id_user, datetime, percentage_target, shots, duration, id = None):
         self.id = id
         self.id_user = id_user
+        self.datetime = datetime
         self.percentage_target = percentage_target
         self.shots = shots
         self.duration = duration
