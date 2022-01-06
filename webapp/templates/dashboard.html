@@ -9,21 +9,21 @@
     <img id="logo" src="{{url_for('static', filename='img/shotbuddy.png')}}" alt="ShotBuddy">
 
     <div id="last_session">
-        <div id="last_session_title"><span class="bold">LAST SESSION</span> XX/XX/XX </div>
-        <div id="last_session_subtitle"><span class="medium">SCORED</span> XXX/XXX <span class="light">(XX.XX%)</span></div>
+        <div id="last_session_title"><span class="bold">LAST SESSION</span> <span id="ref_session_data">XX/XX/XX</span> </div>
+        <div id="last_session_subtitle"><span class="medium">SCORED</span> <span id="ref_last_session_score">XXX</span>/<span id="ref_last_session_total">XXX</span> <span class="light">(<span id="ref_last_session_percent">XX.XX</span>%)</span></div>
     </div>
     <div id="averages">
         <div class="average">
-            AVERAGE 3gg <span class="average_percentage">XX</span>%
+            AVERAGE 5: <span class="average_percentage" id="ref_session_tot_percent_5">XX</span>%
         </div>
         <div class="average">
-            AVERAGE 3gg <span class="average_percentage">XX</span>%
+            AVERAGE 10: <span class="average_percentage" id="ref_session_tot_percent_10">XX</span>%
         </div>
         <div class="average">
-            AVERAGE 3gg <span class="average_percentage">XX</span>%
+            AVERAGE 20: <span class="average_percentage" id="ref_session_tot_percent_20">XX</span>%
         </div>
         <div class="average">
-            AVERAGE 3gg <span class="average_percentage">XX</span>%
+            AVERAGE 30: <span class="average_percentage" id="ref_session_tot_percent_30">XX</span>%
         </div>
     </div>
 

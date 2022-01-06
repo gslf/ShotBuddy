@@ -12,7 +12,7 @@ def dashboardDataRetrieve(id_user):
 
         #Retrieve latest 6 sessions
         retrieved_sessions = []
-        for id in session_ids[-6:]:
+        for id in session_ids[-30:]:
             result = sm.load(id)
 
             if result != None:
@@ -44,7 +44,7 @@ def dashboardDataRetrieve(id_user):
             sessions_scores = sessions_scores + scores
 
         session_percent = (sum(sessions_scores) / (len(sessions_scores) * 10)) * 100
-        response.add("5_session_percent", session_percent)
+        response.add("session_tot_percent_5", session_percent)
         
         # Average 10 sessions percentage
         for session in retrieved_sessions[-10: -6]:
@@ -53,7 +53,7 @@ def dashboardDataRetrieve(id_user):
             sessions_scores = sessions_scores + scores
 
         session_percent = (sum(sessions_scores) / (len(sessions_scores) * 10)) * 100
-        response.add("10_session_percent", session_percent)
+        response.add("session_tot_percent_10", session_percent)
 
         # Average 20 session percentage
         for session in retrieved_sessions[-20: -11]:
@@ -62,7 +62,7 @@ def dashboardDataRetrieve(id_user):
             sessions_scores = sessions_scores + scores
 
         session_percent = (sum(sessions_scores) / (len(sessions_scores) * 10)) * 100
-        response.add("20_session_percent", session_percent)
+        response.add("session_tot_percent_20", session_percent)
 
         # Average 30 session percentage
         for session in retrieved_sessions[-30: -21]:
@@ -71,11 +71,11 @@ def dashboardDataRetrieve(id_user):
             sessions_scores = sessions_scores + scores
 
         session_percent = (sum(sessions_scores) / (len(sessions_scores) * 10)) * 100
-        response.add("30_session_percent", session_percent)
+        response.add("session_tot_percent_30", session_percent)
 
         # Charts Data
         # Array with last 10 session percentage
-        session_percentage_10 = []
+        session_percent_10 = []
 
         #Array with last 10 session scored points
         scored_point_10 = []
@@ -91,7 +91,7 @@ def dashboardDataRetrieve(id_user):
             scores = list(map(int, scores_string.split(",")))
             percentage = (sum(scores) / (len(scores) * 10)) * 100
 
-            session_percentage_10.append(percentage)
+            session_percent_10.append(percentage)
 
             scored_point_10.append(sum(scores))
 
@@ -99,7 +99,7 @@ def dashboardDataRetrieve(id_user):
 
             errors_10.append(percentage - session.percentage_target)
 
-        response.add("session_percentage_10", session_percentage_10)
+        response.add("session_percentage_10", session_percent_10)
         response.add("scored_point_10", scored_point_10)
         response.add("shooted_points_10", shooted_points_10)
         response.add("errors_10", errors_10)
