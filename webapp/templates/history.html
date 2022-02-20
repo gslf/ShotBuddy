@@ -8,6 +8,23 @@
 
 <div id="history_container">
 
+    <div class="modal">
+        <div class="modal-content" id="modal_edit">
+            <span class="close-button">&times;</span>
+            &nbsp;<br>&nbsp;<br>
+            Date: <br>
+            <input type="text" id="edit_date" name="edit_date" required size="10"><br>
+
+            Shots: <br>
+            <input type="text" id="edit_shots" name="edit_shots"><br>
+
+            <button onclick="editing()"> EDIT SESSION #<span id="id_session"></span> </button>
+        </div>
+        <div class="modal-content" id="modal_text">
+            <h1 id="modal_text_content"></h1>
+        </div>
+    </div>
+
     <img id="logo" src="{{url_for('static', filename='img/shotbuddy.png')}}" alt="ShotBuddy">
 
     <div id="result_table_container">

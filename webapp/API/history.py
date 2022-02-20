@@ -3,6 +3,31 @@ import logging,datetime
 from webapp.API.Response import Response
 from webapp.SessionsManager import Session, SessionsManager
 
+def historyDataEdit(id_session, id_user, date, shots):   
+    response = Response(True)
+    
+    try:
+        sm = SessionsManager(id_user)
+        sm.load(id_session)
+
+        # Check and load params
+        session_data = datetime.datetime.strptime(date, '%d / %m / %y')
+        sm.session.datetime = session_data.strftime('%d-%m-%y %H:%M:%S')
+        
+        shot_list = shots.split(",")
+        for shot in shot_list:
+            int(shot)
+
+        sm.session.shots = "[" + shots + "]"
+        
+        sm.save()
+
+    except Exception as api_exception:
+        response = Response(False)     
+        logging.error("[history edit] API error - {}".format(api_exception))
+
+    return response.compose()
+
 
 def historyDataRetrieve(id_user):
     response = Response(True)
@@ -32,9 +57,11 @@ def historyDataRetrieve(id_user):
                 percentage = (sum(session_scores) / available_score) * 100
 
                 formatted_session = {
+                    "id": session.id,
                     "data": formatted_session_data,
                     "score": score,
                     "shots": shots,
+                    "shot_list": session_scores,
                     "percentage": percentage
                 }
 
@@ -46,7 +73,7 @@ def historyDataRetrieve(id_user):
 
     except Exception as api_exception:
         response = Response(False)     
-        logging.error("[history] API error - {}".format(api_exception))
+        logging.error("[history retrieve] API error - {}".format(api_exception))
 
     return response.compose()
 
