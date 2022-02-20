@@ -14,7 +14,7 @@
     margin: 0 auto;
 }
 
-#result_table{
+#result_table_container{
     width:320px;
     margin-top:30px;
     color:#FFF;
@@ -23,24 +23,24 @@
     margin-bottom:300px;
 }
 
-#result_table table{
+#result_table_container table{
     width:100%;
     color:#FFF;
     
 }
 
-#result_table td, #result_table th{
+#result_table_container td, #result_table_container th{
     text-align: center;
     border: 1px solid rgb(138, 138, 138);
 }
 
-#result_table tr{
+#result_table_container tr{
     height:30px;
     line-height:30px;
     border-spacing: 10em;
 }
 
-#result_table .fas:hover{
+#result_table_container .fas:hover{
         cursor:pointer;
 }
 

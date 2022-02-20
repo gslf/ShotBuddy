@@ -129,8 +129,7 @@ $(document).ready(function(){
                 }
             });
 
-            // TODO
-            console.log(data)
+            //console.log(data)
         })
 
         .fail(function(jqxhr, settings, ex) { 

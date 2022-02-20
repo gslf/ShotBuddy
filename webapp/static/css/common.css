@@ -50,3 +50,7 @@ body{
     cursor:pointer;
 }
 
+#menu a, #menu a:hover, #menu a:visited, #menu a:active{
+    color:#2f2f2f;
+}
+

@@ -10,7 +10,7 @@ def dashboardDataRetrieve(id_user):
         sm = SessionsManager(id_user)
         session_ids = sm.list()
 
-        #Retrieve latest 6 sessions
+        #Retrieve latest 30 sessions
         retrieved_sessions = []
         for id in session_ids[-30:]:
             result = sm.load(id)
