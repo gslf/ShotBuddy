@@ -38,7 +38,7 @@ $(document).ready(function(){
                                                     '<td>'+ item.score + '</td>'+
                                                     '<td>'+ parseFloat(item.percentage).toFixed(2) + '</td>'+
                                                     '<td> <i onclick="toggleModal(' + item.id + ',\'' + item.data + '\',\'' + item.shot_list + '\')" class="fas fa-edit"></i> &nbsp;&nbsp;'+
-                                                    '<i class="fas fa-trash"></i> </td>'+
+                                                    '<i onclick="deletesession(' + item.id + ')" class="fas fa-trash"></i> </td>'+
                                                 '</tr>');
             });
 
@@ -79,4 +79,33 @@ function editing(){
             modal.classList.toggle("show-modal");
             alert(LOADING_ERROR + ex); 
         });
+};
+
+function deletesession(id_session){
+
+    modal.classList.toggle("show-modal");
+    $("#modal_edit").hide();
+    $("#modal_text").show();
+
+    // API REQUEST
+    $.post('/API/historydelete', {"id_session": id_session}, 
+    function(data, status, xhr) {
+
+        // Reload page if editing succeeded or show error
+        if (data["status"]){
+            modal.classList.toggle("show-modal");
+            location.reload();
+        }else{
+            modal.classList.toggle("show-modal");
+            alert(LOADING_ERROR); 
+        }
+
+    //console.log(data)
+    })
+
+    // Show error for failed request
+    .fail(function(jqxhr, settings, ex) { 
+        modal.classList.toggle("show-modal");
+        alert(LOADING_ERROR + ex); 
+    });
 }

@@ -7,7 +7,7 @@ from webapp.User import User
 from webapp.UsersManager import UsersManager
 
 from webapp.API.dashboard import dashboardDataRetrieve
-from webapp.API.history import historyDataRetrieve, historyDataEdit
+from webapp.API.history import historyDataRetrieve, historyDataEdit, historyDataDelete
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -87,4 +87,12 @@ def historyeditAPI():
     data = request.form
     if (data is not None) and ('id_session' in data) and ('date' in data) and ('shots' in data):
         response = historyDataEdit(data['id_session'], current_user.id, data['date'], data['shots'])
+        return response
+
+@app.route('/API/historydelete', methods=['POST'])
+@login_required
+def historydeleteAPI():
+    data = request.form
+    if (data is not None) and ('id_session' in data):
+        response = historyDataDelete(data['id_session'], current_user.id)
         return response

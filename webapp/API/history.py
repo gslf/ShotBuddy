@@ -3,6 +3,26 @@ import logging,datetime
 from webapp.API.Response import Response
 from webapp.SessionsManager import Session, SessionsManager
 
+def historyDataDelete(id_session, id_user):
+    response = Response(True)
+    
+    try:
+        sm = SessionsManager(id_user)
+        sm.load(id_session)
+
+        # Remove session
+        result = sm.remove()
+
+        if not result:
+            response.status = False
+            logging.error("[history delete] SessionManager error ")
+
+    except Exception as api_exception:
+        response.status = False   
+        logging.error("[history delete] API error - {}".format(api_exception))
+
+    return response.compose()
+
 def historyDataEdit(id_session, id_user, date, shots):   
     response = Response(True)
     
